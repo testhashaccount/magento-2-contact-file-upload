@@ -1,0 +1,27 @@
+<p style="font-size: 15px;">
+    <b>Attachment</b>
+    (Upload any relevant file e.g. screenshot of website error)
+</p>
+<p id="file_error" class="message-error error message" style="display:none;">
+    File is too large
+</p>
+<p class="file">
+    File must be less than 2MB and in any of these formats: .jpg, .png, .gif, .pdf, .docx
+</p>
+<input id="file-btn" accept=".pdf, .png, .jpg, .gif, .docx, .jpeg/*" name="document" type="file" value="">
+
+<script type="text/javascript" xml="space">
+require(['jquery'], function ($) {
+    jQuery(document).ready(function($){
+        var uploadField = document.getElementById("file-btn");
+        uploadField.onchange = function() {
+            if(this.files[0].size > 2048){
+               $('#file_error').show();
+               this.value = "";
+            }else{
+                $('#file_error').hide();
+            };
+        };
+    });
+});
+</script>
